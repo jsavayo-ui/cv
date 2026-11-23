@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>จุลเลขา สาวาโย · นักวางแผนและวิเคราะห์นโยบายด้านทรัพยากรน้ำ</title>
+<meta name="description" content="ประวัติการศึกษา ประสบการณ์การทำงาน ผลงานวิจัย และความเชี่ยวชาญของ จุลเลขา สาวาโย">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ===== Design tokens ===== */
+:root{
+  --paper:#F6F4EF;      /* พื้นหลังหลัก อบอุ่น นุ่มตา */
+  --card:#FFFFFF;
+  --ink:#1B2430;        /* ตัวอักษรหลัก */
+  --mute:#6B7480;       /* ตัวอักษรรอง */
+  --line:#E6E1D6;
+  --navy:#0F2F4F;       /* ความน่าเชื่อถือ (สีหน่วยงาน) */
+  /* สีมงคลประจำวันเกิด — เปลี่ยนค่าตรงนี้เมื่อได้วันเกิด */
+  --lucky-1:#2A8C8C;
+  --lucky-2:#C9A24B;
+  --lucky-3:#8C6E9E;
+  --r:22px;
+  --ease:cubic-bezier(.2,.7,.2,1);
+  font-size:17px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-snap-type:y proximity}
+body{font-family:'Prompt',system-ui,sans-serif;font-weight:300;color:var(--ink);background:var(--paper);line-height:1.75;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+
+/* ===== Sections (สัมผัสแบบแอป: แต่ละหน้าเต็มจอ เลื่อนนุ่ม) ===== */
+.snap{min-height:100vh;min-height:100svh;scroll-snap-align:start;position:relative;padding:112px 24px 120px;display:flex;flex-direction:column;justify-content:center}
+.wrap{width:100%;max-width:760px;margin:0 auto}
+.eyebrow{font-size:12px;font-weight:500;letter-spacing:.18em;color:var(--lucky-1);text-transform:uppercase;margin-bottom:14px}
+h1,h2,h3{font-weight:500;letter-spacing:-.01em;line-height:1.3}
+h2{font-size:clamp(28px,5vw,40px);margin-bottom:14px}
+.lead{font-size:clamp(17px,2.2vw,20px);color:var(--mute);max-width:620px}
+
+/* ===== Reveal on scroll ===== */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.08s}.rv.d2{transition-delay:.16s}.rv.d3{transition-delay:.24s}
+
+/* ===== Navigation: ด้านบนบนจอกว้าง / แถบล่างบนมือถือ ===== */
+.bar{position:fixed;z-index:50;display:flex;justify-content:center;gap:4px;
+  left:50%;transform:translateX(-50%);bottom:14px;padding:8px;border-radius:999px;
+  background:rgba(255,255,255,.78);backdrop-filter:saturate(1.6) blur(18px);-webkit-backdrop-filter:saturate(1.6) blur(18px);
+  box-shadow:0 10px 30px rgba(15,47,79,.12);border:1px solid rgba(255,255,255,.7)}
+.bar a{font-size:13px;font-weight:400;color:var(--mute);padding:9px 14px;border-radius:999px;white-space:nowrap;transition:background .3s,color .3s}
+.bar a.on{background:var(--navy);color:#fff}
+.brand{position:fixed;top:22px;left:24px;z-index:50;font-size:15px;font-weight:500;color:var(--navy);
+  background:rgba(246,244,239,.85);backdrop-filter:blur(10px);padding:6px 12px;border-radius:12px}
+@media (min-width:900px){
+  .bar{top:22px;bottom:auto;transform:translateX(-50%)}
+}
+
+/* ===== Hero ===== */
+#hero{background:
+  radial-gradient(900px 500px at 85% -10%,rgba(42,140,140,.16),transparent 60%),
+  radial-gradient(700px 500px at -10% 110%,rgba(201,162,75,.16),transparent 60%),
+  var(--paper);text-align:center;align-items:center}
+.avatar{width:min(232px,58vw);aspect-ratio:1;border-radius:50%;padding:6px;margin:0 auto 28px;
+  background:conic-gradient(from 200deg,var(--lucky-2),var(--lucky-1),var(--lucky-3),var(--lucky-2));
+  box-shadow:0 24px 60px rgba(15,47,79,.18)}
+.avatar .ph{width:100%;height:100%;border-radius:50%;overflow:hidden;background:var(--navy);display:flex;align-items:center;justify-content:center;color:#fff;font-size:56px;font-weight:300}
+.avatar img{width:100%;height:100%;object-fit:cover}
+.name{font-size:clamp(40px,8.5vw,72px);font-weight:500;letter-spacing:-.02em;line-height:1.1;color:var(--navy)}
+.name small{display:block;font-size:.42em;font-weight:300;color:var(--mute);letter-spacing:0;margin-top:8px}
+.role{margin:18px auto 0;font-size:clamp(16px,2vw,19px);color:var(--ink);max-width:560px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:26px}
+.chip{font-size:13px;padding:6px 14px;border-radius:999px;background:var(--card);border:1px solid var(--line);color:var(--ink)}
+.scroll-cue{position:absolute;bottom:96px;left:50%;transform:translateX(-50%);font-size:12px;color:var(--mute);display:flex;flex-direction:column;align-items:center;gap:8px;letter-spacing:.08em}
+.scroll-cue i{width:1px;height:34px;background:linear-gradient(var(--mute),transparent);animation:cue 2.2s var(--ease) infinite}
+@keyframes cue{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* ===== Intro ===== */
+.intro-text{font-size:clamp(22px,3.6vw,30px);font-weight:300;line-height:1.6;color:var(--ink)}
+.intro-text b{font-weight:500;color:var(--navy)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:40px}
+.stat{background:var(--card);border-radius:var(--r);padding:22px 18px;box-shadow:0 1px 0 var(--line),0 12px 30px rgba(15,47,79,.05)}
+.stat .n{font-size:clamp(26px,4vw,36px);font-weight:500;color:var(--navy);line-height:1.1}
+.stat .t{font-size:13px;color:var(--mute);margin-top:6px}
+.stat:nth-child(1) .n{color:var(--lucky-1)}
+.stat:nth-child(2) .n{color:var(--lucky-2)}
+.stat:nth-child(3) .n{color:var(--lucky-3)}
+
+/* ===== Cards & lists ===== */
+.card{background:var(--card);border-radius:var(--r);padding:26px 26px;box-shadow:0 1px 0 var(--line),0 14px 40px rgba(15,47,79,.06)}
+.item{position:relative;padding-left:26px;margin-top:18px}
+.item::before{content:"";position:absolute;left:0;top:10px;width:9px;height:9px;border-radius:50%;background:var(--lucky-1);box-shadow:0 0 0 5px rgba(42,140,140,.14)}
+.item:nth-child(2)::before{background:var(--lucky-2);box-shadow:0 0 0 5px rgba(201,162,75,.16)}
+.item:nth-child(3)::before{background:var(--lucky-3);box-shadow:0 0 0 5px rgba(140,110,158,.16)}
+.item .yr{font-size:13px;font-weight:500;color:var(--mute);letter-spacing:.04em}
+.item h3{font-size:19px;color:var(--navy);margin-top:2px}
+.item .sub{font-size:14.5px;color:var(--mute);margin-top:4px}
+.item p{font-size:15px;color:var(--ink);margin-top:8px}
+
+/* ===== Horizontal carousel (แตะ-ปัดซ้ายขวาแบบแอป) ===== */
+.track{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 24px 26px;margin:0 -24px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.track::-webkit-scrollbar{display:none}
+.track > .card{flex:0 0 min(84vw,380px);scroll-snap-align:start;display:flex;flex-direction:column}
+.track .yr{display:inline-block;align-self:flex-start;font-size:12px;font-weight:500;color:#fff;background:var(--lucky-1);padding:4px 11px;border-radius:999px;margin-bottom:14px}
+.track .card:nth-child(2) .yr{background:var(--lucky-2)}
+.track .card:nth-child(3) .yr{background:var(--lucky-3)}
+.track .card:nth-child(4) .yr{background:var(--navy)}
+.track h3{font-size:18px;color:var(--navy);margin-bottom:8px}
+.track ul{list-style:none;margin-top:12px;display:flex;flex-direction:column;gap:8px}
+.track li{font-size:14.5px;color:var(--mute);padding-left:16px;position:relative;line-height:1.6}
+.track li::before{content:"";position:absolute;left:0;top:.7em;width:5px;height:5px;border-radius:50%;background:var(--ink);opacity:.35}
+.hint{font-size:12.5px;color:var(--mute);margin-top:4px;display:flex;align-items:center;gap:8px}
+.hint::after{content:"";width:28px;height:1px;background:var(--mute);opacity:.5}
+
+/* ===== Research ===== */
+.pub{display:grid;gap:14px;margin-top:26px}
+.pub .card{padding:22px 24px;border-left:3px solid var(--lucky-1)}
+.pub .card:nth-child(2){border-left-color:var(--lucky-2)}
+.pub .card:nth-child(3){border-left-color:var(--lucky-3)}
+.pub .k{font-size:12px;letter-spacing:.08em;color:var(--mute);text-transform:uppercase}
+.pub h3{font-size:16.5px;color:var(--navy);margin:6px 0 6px;font-weight:500}
+.pub p{font-size:14px;color:var(--mute)}
+
+/* ===== Expertise ===== */
+.skills{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:26px}
+.skill{background:var(--card);border-radius:18px;padding:20px 20px 22px;box-shadow:0 1px 0 var(--line)}
+.skill h3{font-size:16px;color:var(--navy);font-weight:500}
+.skill p{font-size:13.5px;color:var(--mute);margin-top:4px}
+.bar2{height:4px;background:#EDE8DC;border-radius:4px;margin-top:14px;overflow:hidden}
+.bar2 span{display:block;height:100%;width:0;border-radius:4px;background:linear-gradient(90deg,var(--lucky-1),var(--lucky-2));transition:width 1.4s var(--ease)}
+.bar2.go span{width:var(--w)}
+.tools{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.tools span{font-size:13px;color:var(--ink);background:var(--card);border:1px solid var(--line);padding:6px 12px;border-radius:10px}
+
+/* ===== Training ===== */
+.cert{display:grid;gap:12px;margin-top:26px}
+.cert div{background:var(--card);border-radius:16px;padding:16px 20px;display:flex;gap:16px;align-items:flex-start;box-shadow:0 1px 0 var(--line)}
+.cert .y{flex:0 0 auto;font-size:12.5px;font-weight:500;color:var(--lucky-2);min-width:58px;padding-top:2px}
+.cert p{font-size:14.5px;color:var(--ink);line-height:1.6}
+.cert small{display:block;font-size:12.5px;color:var(--mute)}
+
+/* ===== Contact ===== */
+#contact{background:var(--navy);color:#fff;text-align:center;align-items:center}
+#contact h2{color:#fff}
+#contact .eyebrow{color:var(--lucky-2)}
+#contact .lead{color:#C7D3DF;margin:0 auto}
+.qr{background:#fff;padding:16px;border-radius:24px;margin:34px auto 0;width:fit-content;box-shadow:0 20px 50px rgba(0,0,0,.25)}
+.qr img{width:170px;height:170px}
+.qr-cap{font-size:13px;color:#C7D3DF;margin-top:14px}
+.links{display:flex;flex-direction:column;gap:10px;margin-top:30px;align-items:center}
+.links a{font-size:15.5px;color:#fff;padding:12px 22px;border-radius:14px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);min-width:280px;transition:background .3s}
+.links a:hover{background:rgba(255,255,255,.16)}
+footer{background:var(--navy);color:#8FA3B8;text-align:center;font-size:12.5px;padding:0 24px 110px}
+
+/* ===== มือถือ ===== */
+@media (max-width:640px){
+  .snap{padding:96px 20px 120px}
+  .stats{grid-template-columns:1fr 1fr 1fr;gap:10px}
+  .stat{padding:18px 12px}
+  .skills{grid-template-columns:1fr}
+  .track{margin:0 -20px;padding-left:20px;padding-right:20px}
+  .brand{top:14px;left:16px}
+  .bar{left:10px;right:10px;transform:none;bottom:12px;justify-content:space-between;padding:6px;gap:0}
+  .bar a{font-size:12.5px;padding:9px 10px}
+  .scroll-cue{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none;transition:none}
+  .bar2 span{transition:none}
+  .scroll-cue i{animation:none}
+}
+</style>
+</head>
+<body>
+
+<div class="brand">จุลเลขา สาวาโย</div>
+
+<nav class="bar" id="bar">
+  <a href="#hero" class="on">หน้าแรก</a>
+  <a href="#edu">การศึกษา</a>
+  <a href="#work">งาน</a>
+  <a href="#research">ผลงาน</a>
+  <a href="#skills">ทักษะ</a>
+  <a href="#contact">ติดต่อ</a>
+</nav>
+
+<!-- ===== หน้าแรก ===== -->
+<section id="hero" class="snap">
+  <div class="wrap">
+    <div class="avatar rv">
+      <div class="ph">
+        <img src="photo.jpg" alt="จุลเลขา สาวาโย" onerror="this.remove()">
+        <span>จ</span>
+      </div>
+    </div>
+    <h1 class="name rv d1">จุลเลขา สาวาโย<small>Joonlaykha Savayo</small></h1>
+    <p class="role rv d2">นักวางแผนและวิเคราะห์นโยบายด้านทรัพยากรน้ำ<br>ผู้ชำนาญด้านอุทกธรณีวิทยาและการเปลี่ยนแปลงสภาพภูมิอากาศ</p>
+    <div class="chips rv d3">
+      <span class="chip">ทรัพยากรน้ำ</span>
+      <span class="chip">อุทกธรณีวิทยา</span>
+      <span class="chip">ระบบสารสนเทศภูมิศาสตร์</span>
+      <span class="chip">แผนแม่บท</span>
+      <span class="chip">การเปลี่ยนแปลงสภาพภูมิอากาศ</span>
+    </div>
+  </div>
+  <div class="scroll-cue"><span>เลื่อนลงเพื่อดูประวัติ</span><i></i></div>
+</section>
+
+<!-- ===== บทนำ ===== -->
+<section id="intro" class="snap">
+  <div class="wrap">
+    <p class="eyebrow rv">ประวัติโดยย่อ</p>
+    <p class="intro-text rv d1">ข้าพเจ้าทำงานด้านการวางแผนและการวิเคราะห์ข้อมูลทรัพยากรน้ำมาอย่างต่อเนื่อง โดยเชื่อมโยง<b>องค์ความรู้เชิงวิชาการ</b>เข้ากับ<b>การนำไปใช้ในการตัดสินใจเชิงนโยบาย</b> และให้ความสำคัญกับการประสานงานร่วมกับหน่วยงานภาครัฐและชุมชน</p>
+    <div class="stats rv d2">
+      <div class="stat"><div class="n">ปริญญาโท</div><div class="t">วิศวกรรมศาสตรมหาบัณฑิต</div></div>
+      <div class="stat"><div class="n">2563</div><div class="t">เริ่มทำงานด้านทรัพยากรน้ำ (พุทธศักราช)</div></div>
+      <div class="stat"><div class="n">วารสารนานาชาติ</div><div class="t">ฐานข้อมูล Scopus ควอไทล์ที่ 2</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== การศึกษา ===== -->
+<section id="edu" class="snap">
+  <div class="wrap">
+    <p class="eyebrow rv">การศึกษา</p>
+    <h2 class="rv d1">ความรู้ที่เป็นรากฐาน</h2>
+    <div class="card rv d2" style="margin-top:22px">
+      <div class="item" style="margin-top:0">
+        <div class="yr">พุทธศักราช 2563 – 2567</div>
+        <h3>วิศวกรรมศาสตรมหาบัณฑิต สาขาวิชาวิศวกรรมโยธา (ทรัพยากรน้ำ)</h3>
+        <div class="sub">มหาวิทยาลัยขอนแก่น · คะแนนเฉลี่ยสะสม 3.44</div>
+        <p>วิทยานิพนธ์เรื่อง การประเมินศักยภาพน้ำผิวดินและน้ำใต้ดินภายใต้การเปลี่ยนแปลงสภาพภูมิอากาศ ในลุ่มน้ำลำพะเนียง</p>
+      </div>
+      <div class="item">
+        <div class="yr">พุทธศักราช 2558 – 2562</div>
+        <h3>วิทยาศาสตรบัณฑิต สาขาวิชาเทคโนโลยีธรณี</h3>
+        <div class="sub">มหาวิทยาลัยขอนแก่น</div>
+        <p>โครงงานการประเมินศักยภาพน้ำใต้ดินด้วยระบบสารสนเทศภูมิศาสตร์และการรับรู้ระยะไกล ลุ่มน้ำชี</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ประสบการณ์ ===== -->
+<section id="work" class="snap">
+  <div class="wrap">
+    <p class="eyebrow rv">ประสบการณ์การทำงาน</p>
+    <h2 class="rv d1">โครงการที่ได้รับผิดชอบ</h2>
+    <p class="hint rv d1" style="margin-top:10px">ปัดเพื่อดูโครงการอื่น</p>
+  </div>
+  <div class="track rv d2" style="margin-top:18px">
+    <div class="card">
+      <span class="yr">2569</span>
+      <h3>โครงการประเมินความเสี่ยงด้านทรัพยากรน้ำ กลุ่มบริษัทบุญรอด</h3>
+      <p style="font-size:14.5px;color:var(--mute)">ผู้ช่วยวิจัยและผู้จัดการโครงการ</p>
+      <ul>
+        <li>วิเคราะห์ความเสี่ยงด้านทรัพยากรน้ำให้แก่โรงงานในเครือหลายแห่ง</li>
+        <li>จัดทำข้อมูลและแผนที่ตำแหน่งแหล่งน้ำบาดาลประกอบการตัดสินใจ</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="yr">2569</span>
+      <h3>โครงการจัดทำแผนแม่บทการบริหารจัดการทรัพยากรน้ำ ลุ่มน้ำชี</h3>
+      <p style="font-size:14.5px;color:var(--mute)">ร่วมกับสำนักงานทรัพยากรน้ำแห่งชาติ</p>
+      <ul>
+        <li>จัดทำแผนแม่บทระยะยาวด้านการบริหารจัดการทรัพยากรน้ำ</li>
+        <li>วิเคราะห์น้ำใต้ดินด้วยแบบจำลองทางคณิตศาสตร์</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="yr">2568</span>
+      <h3>โครงการแผนแม่บทการเติมน้ำใต้ดินเชิงจัดการ ลุ่มน้ำมูล</h3>
+      <p style="font-size:14.5px;color:var(--mute)">ผู้จัดการโครงการ · สำนักงานการวิจัยแห่งชาติ ร่วมกับกรมทรัพยากรน้ำบาดาล</p>
+      <ul>
+        <li>บริหารโครงการและประสานการทำงานกับหน่วยงานด้านทรัพยากรน้ำ</li>
+        <li>วิเคราะห์ผลกระทบจากการเปลี่ยนแปลงสภาพภูมิอากาศต่อน้ำใต้ดิน</li>
+        <li>สร้างแบบจำลองด้วยโปรแกรม SWAT และ MODFLOW</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="yr">2567 – 2568</span>
+      <h3>ผู้จัดการห้องปฏิบัติการวิจัยอุทกธรณีวิทยา</h3>
+      <p style="font-size:14.5px;color:var(--mute)">คณะเทคโนโลยี มหาวิทยาลัยขอนแก่น</p>
+      <ul>
+        <li>จัดทำแบบจำลองน้ำใต้ดินและการทำแผนที่ธรณีวิทยา</li>
+        <li>ดูแลกิจกรรมวิจัยและเป็นผู้ช่วยสอนรายวิชา GIS และการรับรู้ระยะไกล</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="yr">2567 – 2568</span>
+      <h3>ระบบสนับสนุนการตัดสินใจบริหารน้ำ เขื่อนอุบลรัตน์</h3>
+      <p style="font-size:14.5px;color:var(--mute)">ร่วมกับการไฟฟ้าฝ่ายผลิตแห่งประเทศไทย</p>
+      <ul>
+        <li>วิเคราะห์ความสัมพันธ์ระหว่างอุทกวิทยาลุ่มน้ำและการเปลี่ยนแปลงการใช้ที่ดิน</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="yr">2564 – 2567</span>
+      <h3>เมืองอัจฉริยะขอนแก่น ด้านการบริหารจัดการน้ำในเขตเมือง</h3>
+      <p style="font-size:14.5px;color:var(--mute)">ผู้ช่วยวิจัยและผู้ช่วยสอน</p>
+      <ul>
+        <li>ประเมินมูลค่าความเสียหายจากอุทกภัยด้วยแบบจำลอง HEC-FIA</li>
+        <li>ออกแบบระบบติดตามตรวจวัดน้ำสำหรับการบริหารน้ำในเมือง</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ผลงานวิจัย ===== -->
+<section id="research" class="snap">
+  <div class="wrap">
+    <p class="eyebrow rv">ผลงานวิจัยและการนำเสนอ</p>
+    <h2 class="rv d1">ผลงานที่ภาคภูมิใจ</h2>
+    <div class="pub">
+      <div class="card rv d2">
+        <span class="k">บทความวารสารนานาชาติ</span>
+        <h3>การประเมินศักยภาพน้ำผิวดินและน้ำใต้ดินภายใต้การเปลี่ยนแปลงสภาพภูมิอากาศ ในลุ่มน้ำลำพะเนียง</h3>
+        <p>Engineering and Applied Science Research · ฐานข้อมูล Scopus ควอไทล์ที่ 2 · ปีที่ 54 ฉบับที่ 4 พุทธศักราช 2568</p>
+      </div>
+      <div class="card rv d3">
+        <span class="k">โครงงานระดับปริญญาตรี</span>
+        <h3>การประเมินศักยภาพน้ำใต้ดินด้วยระบบสารสนเทศภูมิศาสตร์และการรับรู้ระยะไกล ลุ่มน้ำชี จังหวัดมหาสารคามและร้อยเอ็ด</h3>
+        <p>สาขาวิชาเทคโนโลยีธรณี มหาวิทยาลัยขอนแก่น</p>
+      </div>
+      <div class="card rv d3">
+        <span class="k">การนำเสนอผลงาน</span>
+        <h3>การศึกษาทางอุทกเคมีของน้ำพุร้อนชายฝั่ง โอบอค ประเทศจิบูตี</h3>
+        <p>การศึกษาอิสระ สาขาวิชาเทคโนโลยีธรณี มหาวิทยาลัยขอนแก่น</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ความเชี่ยวชาญ ===== -->
+<section id="skills" class="snap">
+  <div class="wrap">
+    <p class="eyebrow rv">ความเชี่ยวชาญ</p>
+    <h2 class="rv d1">องค์ความรู้และเครื่องมือ</h2>
+    <div class="skills">
+      <div class="skill rv d1"><h3>การจัดการทรัพยากรน้ำแบบบูรณาการ</h3><p>วางแผนระดับลุ่มน้ำและระดับจังหวัด</p></div>
+      <div class="skill rv d2"><h3>อุทกธรณีวิทยาและน้ำใต้ดิน</h3><p>แบบจำลองและการประเมินศักยภาพแหล่งน้ำ</p></div>
+      <div class="skill rv d1"><h3>การเปลี่ยนแปลงสภาพภูมิอากาศ</h3><p>ประเมินผลกระทบต่อทรัพยากรน้ำ</p></div>
+      <div class="skill rv d2"><h3>ระบบสารสนเทศภูมิศาสตร์</h3><p>วิเคราะห์เชิงพื้นที่และการรับรู้ระยะไกล</p></div>
+      <div class="skill rv d1"><h3>การวิเคราะห์นโยบายและแผน</h3><p>จัดทำแผนแม่บทและติดตามประเมินผล</p></div>
+      <div class="skill rv d2"><h3>การวิเคราะห์ข้อมูล</h3><p>การเขียนโปรแกรมด้วยภาษาไพทอนและภาษาอาร์</p></div>
+    </div>
+    <div class="tools rv d3">
+      <span>SWAT</span><span>MODFLOW</span><span>HEC-RAS</span><span>HEC-HMS</span><span>HEC-FIA</span><span>WEAP</span><span>QGIS</span><span>ArcGIS</span><span>Python</span><span>R</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== การอบรมและรางวัล ===== -->
+<section id="training" class="snap">
+  <div class="wrap">
+    <p class="eyebrow rv">การอบรมและรางวัล</p>
+    <h2 class="rv d1">การพัฒนาตนเองอย่างต่อเนื่อง</h2>
+    <div class="cert">
+      <div class="rv d1"><span class="y">2567</span><p>การอบรมการปรับลดขนาดข้อมูลภูมิอากาศ<small>สถาบันสารสนเทศทรัพยากรน้ำ</small></p></div>
+      <div class="rv d2"><span class="y">2566</span><p>การอบรมแบบจำลองน้ำใต้ดินสำหรับอุตสาหกรรมเหมืองแร่<small>สถาบันวิจัยน้ำใต้ดิน มหาวิทยาลัยขอนแก่น</small></p></div>
+      <div class="rv d3"><span class="y">2567</span><p>วิทยากรผู้ช่วยค่ายโอลิมปิกวิชาการสาขาวิทยาศาสตร์โลก<small>โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น</small></p></div>
+      <div class="rv d1"><span class="y">รางวัล</span><p>รองชนะเลิศอันดับที่ 3 การประกวดนวัตกรรมเครื่องวัดปริมาณน้ำฝนอัตโนมัติ<small>คณะกรรมาธิการแม่น้ำโขง</small></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ติดต่อ ===== -->
+<section id="contact" class="snap">
+  <div class="wrap">
+    <p class="eyebrow rv">ติดต่อ</p>
+    <h2 class="rv d1">ยินดีรับฟังทุกโอกาส</h2>
+    <p class="lead rv d2">หากมีโอกาสร่วมงานด้านการวางแผนและการวิเคราะห์นโยบายทรัพยากรน้ำ ข้าพเจ้ายินดีให้ข้อมูลเพิ่มเติมและพร้อมปฏิบัติหน้าที่ตามที่ได้รับมอบหมาย</p>
+    <div class="qr rv d2">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAjAAAAIwCAIAAAAXk8Y4AAAMuUlEQVR4Xu3dMY4lWxFFUQqVx1AYCuNlKAwFOxEGEjgljtRB7+StZde/irz5+m+lFV/P8/wBAH63P/7uAQDgnwQJgARBAiBBkABIECQAEgQJgARBAiBBkABIECQAEgQJgARBAiBBkABIECQAEgQJgARBAiDhe53iT3/+y/qf8IO//+2vqfu5fr/r867zrOdfe/v8n2Z9X/xs/ffoCwmABEECIEGQAEgQJAASBAmABEECIEGQAEgQJAASBAmABEECIEGQAEgQJAASBAmABEECIEGQAEiY9yGt1n0Yb3e9T+X6/NX1+70+f7Xe/zr/28//NOv7fbv197nyhQRAgiABkCBIACQIEgAJggRAgiABkCBIACQIEgAJggRAgiABkCBIACQIEgAJggRAgiABkCBIACSc70NaXe/bWH3avpP1edf3tZ6/qs2zur6f9fzafdbmWa3zX1t/D9d8IQGQIEgAJAgSAAmCBECCIAGQIEgAJAgSAAmCBECCIAGQIEgAJAgSAAmCBECCIAGQIEgAJAgSAAm5fUj8Xuu+lnWfyvX5q3Wea7V54H/JFxIACYIEQIIgAZAgSAAkCBIACYIEQIIgAZAgSAAkCBIACYIEQIIgAZAgSAAkCBIACYIEQIIgAZBgH9LLXO8f4vda3+9q3bf0afPwe/lCAiBBkABIECQAEgQJgARBAiBBkABIECQAEgQJgARBAiBBkABIECQAEgQJgARBAiBBkABIECQAEnL7kK73r3ya9T7XfTmr63lq519b39d6P9dq81z7tOdd+UICIEGQAEgQJAASBAmABEECIEGQAEgQJAASBAmABEECIEGQAEgQJAASBAmABEECIEGQAEgQJAASzvchrfta+Nl6n7X9K9fzO//3/n7efv+r9Xn5mS8kABIECYAEQQIgQZAASBAkABIECYAEQQIgQZAASBAkABIECYAEQQIgQZAASBAkABIECYAEQQIgYd6HVNuvw89q+1qufz/r+bX7WZn/11p/P/xavpAASBAkABIECYAEQQIgQZAASBAkABIECYAEQQIgQZAASBAkABIECYAEQQIgQZAASBAkABIECYCEeR/Sun/l0/aL1O5nvf91/mvX86z3s1rnX+e5Pv/t1vtZre9rdT3/6vp5fSEBkCBIACQIEgAJggRAgiABkCBIACQIEgAJggRAgiABkCBIACQIEgAJggRAgiABkCBIACQIEgAJ8z6kmrfvC1nnv95Hcn1+zXr/12rz1Lz991l7v7X79IUEQIIgAZAgSAAkCBIACYIEQIIgAZAgSAAkCBIACYIEQIIgAZAgSAAkCBIACYIEQIIgAZAgSAAkfD3PkxjkX673haz7P2rzrNb51/u5ts7/dtf3f32fb59/tT7vev/X56/WeVa+kABIECQAEgQJgARBAiBBkABIECQAEgQJgARBAiBBkABIECQAEgQJgARBAiBBkABIECQAEgQJgITcPqRr6z6S1bov5Hqe1fX8bz//01y/r1Vtnk+z3v/KFxIACYIEQIIgAZAgSAAkCBIACYIEQIIgAZAgSAAkCBIACYIEQIIgAZAgSAAkCBIACYIEQIIgAZDwnZji36z7gdb9HOvfr9b5V+v86zzr36/z1FzPf32f6/lvtz7v+n7X81frPDXr/azP6wsJgARBAiBBkABIECQAEgQJgARBAiBBkABIECQAEgQJgARBAiBBkABIECQAEgQJgARBAiBBkABIyO1DWvdnrPs5rl3Pvz7vOs+1t89/rXY/1/Ncn/921/eznn/NFxIACYIEQIIgAZAgSAAkCBIACYIEQIIgAZAgSAAkCBIACYIEQIIgAZAgSAAkCBIACYIEQIIgAZDw9TzPNMi6P+N6H8/b56lZ39f1/a/n19Tu89r6vtb7Wa3zrNb5r+e5tj7vyhcSAAmCBECCIAGQIEgAJAgSAAmCBECCIAGQIEgAJAgSAAmCBECCIAGQIEgAJAgSAAmCBECCIAGQ8L1Ose7DWPd/rOev1nlW6/zrPNfnX7t+3mvr/J9m/X2uru9/nX+d5/r81fU86/m+kABIECQAEgQJgARBAiBBkABIECQAEgQJgARBAiBBkABIECQAEgQJgARBAiBBkABIECQAEgQJgIR5H9Jq3Yfxdut+lGu1+1/nWe/T+T9b7+da7f1eu37et/OFBECCIAGQIEgAJAgSAAmCBECCIAGQIEgAJAgSAAmCBECCIAGQIEgAJAgSAAmCBECCIAGQIEgAJHw9zzMNsu7zuLbud7mef53n01zff83176F2n+vzrvOv56/ePk/N+r58IQGQIEgAJAgSAAmCBECCIAGQIEgAJAgSAAmCBECCIAGQIEgAJAgSAAmCBECCIAGQIEgAJAgSAAnf6xTrfovr/SLr+avr5+VntfuvzXNtfd63W593/f/Pev61dZ71eVe+kABIECQAEgQJgARBAiBBkABIECQAEgQJgARBAiBBkABIECQAEgQJgARBAiBBkABIECQAEgQJgIR5H9K6D6O2b+Pa9fN+2vnX1vtcXZ+//nusWe9nfd63n39tvc9rvpAASBAkABIECYAEQQIgQZAASBAkABIECYAEQQIgQZAASBAkABIECYAEQQIgQZAASBAkABIECYCEeR9SzbrvZHW9L2Sd/3qe6/NXtXmuXT/v+ntbrfOv86x/fz3Pev619X5qfCEBkCBIACQIEgAJggRAgiABkCBIACQIEgAJggRAgiABkCBIACQIEgAJggRAgiABkCBIACQIEgAJ5/uQ1n0hb9/nsc6/3k/Npz3vtdp9Xv8+1/PX+1n//u2u7/OaLyQAEgQJgARBAiBBkABIECQAEgQJgARBAiBBkABIECQAEgQJgARBAiBBkABIECQAEgQJgARBAiDh63meaZDrfRvr+avr/Sjr/Os86/mr63muz1+t87zd9e9nVbv/2v3UXL8vX0gAJAgSAAmCBECCIAGQIEgAJAgSAAmCBECCIAGQIEgAJAgSAAmCBECCIAGQIEgAJAgSAAmCBEBCbh/S6np/yfX+j2vX97Oq3ef1/bz9edf51/t0/v+39f36QgIgQZAASBAkABIECYAEQQIgQZAASBAkABIECYAEQQIgQZAASBAkABIECYAEQQIgQZAASBAkABK+r6dY96NcW/dzXM+/zrNaz79+3tU6z/q869+v83ya2n1ev6/r82v3ec0XEgAJggRAgiABkCBIACQIEgAJggRAgiABkCBIACQIEgAJggRAgiABkCBIACQIEgAJggRAgiABkPD1PE9iEP471/tXVp+2r+Xtau/rep71/Gvrv991/vX8a+v8vpAASBAkABIECYAEQQIgQZAASBAkABIECYAEQQIgQZAASBAkABIECYAEQQIgQZAASBAkABIECYCE73WK2r6Nt1v3hax/v76v9fxr6zzr866u51nPX739fq6t93P9vmqun9cXEgAJggRAgiABkCBIACQIEgAJggRAgiABkCBIACQIEgAJggRAgiABkCBIACQIEgAJggRAgiABkDDvQ1pd78+oWfepXLu+/+vnvT6/Zn3e6/e7nr/OX7M+77Xafa7zrPfpCwmABEECIEGQAEgQJAASBAmABEECIEGQAEgQJAASBAmABEECIEGQAEgQJAASBAmABEECIEGQAEg434e0WvdtXFv3ebxd7f6vre93vZ/1/FVtntV6P+vzrn//dtf3uZ6/8oUEQIIgAZAgSAAkCBIACYIEQIIgAZAgSAAkCBIACYIEQIIgAZAgSAAkCBIACYIEQIIgAZAgSAAk5PYh8Wut+2DWfSfr+at1nmvX81zf53p+7XnXea6fdz3/7dbnXd+XLyQAEgQJgARBAiBBkABIECQAEgQJgARBAiBBkABIECQAEgQJgARBAiBBkABIECQAEgQJgARBAiDBPiT+w7rvpOZ6/nW/y9ut97nez3r++vfrPDVvn3/lCwmABEECIEGQAEgQJAASBAmABEECIEGQAEgQJAASBAmABEECIEGQAEgQJAASBAmABEECIEGQAEjI7UP6tP0fNdf3v+6zWV3PX7M+73r/tfNX6/PWXM+/vt9rvpAASBAkABIECYAEQQIgQZAASBAkABIECYAEQQIgQZAASBAkABIECYAEQQIgQZAASBAkABIECYCE831I1/s8Ps31fa7n1/aprK6fdz3/Wu19Xd/P9fOu89fmqc3vCwmABEECIEGQAEgQJAASBAmABEECIEGQAEgQJAASBAmABEECIEGQAEgQJAASBAmABEECIEGQAEj4ep4nMQgAn80XEgAJggRAgiABkCBIACQIEgAJggRAgiABkCBIACQIEgAJggRAgiABkCBIACQIEgAJggRAgiABkPAPNU3ijfNTt+gAAAAASUVORK5CYII=" alt="QR Code ลิงก์ไปยังเว็บไซต์นี้">
+    </div>
+    <p class="qr-cap rv d2">สแกนเพื่อเปิดหน้านี้บนโทรศัพท์</p>
+    <div class="links rv d3">
+      <a href="tel:+66972616926">โทรศัพท์ 097-261-6926</a>
+      <a href="mailto:j.savayo@gmail.com">j.savayo@gmail.com</a>
+      <a href="#hero">กลับสู่หน้าแรก</a>
+    </div>
+  </div>
+</section>
+<footer>© จุลเลขา สาวาโย</footer>
+
+<script>
+// เปิดแท็บเมนูตามตำแหน่งที่เลื่อนไปถึง
+const secs=[...document.querySelectorAll('section[id]')];
+const links=[...document.querySelectorAll('#bar a')];
+const navIO=new IntersectionObserver(es=>{
+  es.forEach(e=>{ if(e.isIntersecting){
+    links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id));
+  }});
+},{threshold:.55});
+secs.forEach(s=>navIO.observe(s));
+
+// เปิดการเคลื่อนไหวเมื่อเลื่อนมาถึง
+const rvIO=new IntersectionObserver(es=>{
+  es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); rvIO.unobserve(e.target); }});
+},{threshold:.15,rootMargin:'0px 0px -6% 0px'});
+document.querySelectorAll('.rv').forEach(el=>rvIO.observe(el));
+
+// วาดแถบความเชี่ยวชาญเมื่อเห็น
+const barIO=new IntersectionObserver(es=>{
+  es.forEach(e=>{ if(e.isIntersecting){
+    const b=e.target; b.style.setProperty('--w',b.dataset.w); b.classList.add('go'); barIO.unobserve(b);
+  }});
+},{threshold:.6});
+document.querySelectorAll('.bar2').forEach(b=>barIO.observe(b));
+</script>
+</body>
+</html>
